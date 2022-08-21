@@ -37,4 +37,17 @@ const images = [
   },
 ];
 
-const 
+
+const galleryEl = document.querySelector('.gallery');
+const imagesGall = document.querySelector('li');
+const imageEl = imgEl => {
+  return`\n<li><img src="${imgEl.url}" alt=${imgEl.alt} width="350" height="200"></li>`;
+};
+const markup = images.map(imageEl).join('');
+console.log(markup);
+galleryEl.insertAdjacentHTML('beforeend', markup);
+
+galleryEl.style.display = "flex";
+galleryEl.style.justifyContent = "space-between";
+galleryEl.style.listStyle = "none";
+
