@@ -33,6 +33,7 @@ buttonUp.addEventListener('click', () => {
     document.getElementById('value').textContent = counterValue;
 });
 
+
 console.log(buttonDown);
 console.log(buttonUp);
 
