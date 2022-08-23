@@ -1,3 +1,4 @@
+
 // Задание 8
 // Напиши скрипт управления формой логина.
 
@@ -19,8 +20,26 @@
 // Если пользователь заполнил все поля и отправил форму, собери значения полей в обьект, где имя поля будет именем свойства, а значение поля - значением свойства. Для доступа к элементам формы используй свойство elements.
 // Выведи обьект с введенными данными в консоль и очисти значения полей формы методом reset.
 const form = document.querySelector('.login-form');
+const input = document.querySelector('input');
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', formSubmit);
+function formSubmit(event) {
     event.preventDefault();
-    console.log(form);
-});
+    
+    const formEl = event.currentTarget.elements;
+
+    const email = formEl.email.value;
+    const password = formEl.password.value;
+
+    const formData = {
+        email,
+        password,
+    };
+    
+    if( input.value === "") {
+        window.alert('Всі поля повінні бути заповнені')
+    } else {
+        console.log(formData);
+        event.currentTarget.reset();
+    };
+};
