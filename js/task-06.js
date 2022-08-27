@@ -23,21 +23,25 @@
 //   border-color: #f44336;
 // }
 
-const refs = {
-    inputCustom: document.querySelector("#validation-input"),
+
+const inputCustom = document.querySelector("#validation-input");
+inputCustom.addEventListener('blur', onValidatorBlur);
+  
+function onValidatorBlur(event) {
+    const input = event.currentTarget;
+    const inputLength = Number(input.dataset.length);
+
+    if(input.value.length === inputLength) {
+        input.classList.remove("invalid")
+        input.classList.add("valid");
+    } else {
+        input.classList.remove("valid")
+        input.classList.add("invalid");
+    };
 };
 
-const onValidatorBlur = (event) => {
-    if (event.currentTarget.value === "") return;
-    
-    event.currentTarget.value.length > refs.inputCustom.dataset.length 
-    ? refs.inputCustom.classList.add("invalid")
-    : refs.inputCustom.classList.add("valid");
+const onValidatorFocus = () => {
+    inputCustom.classList.remove("valid", "invalid");
 };
 
-const onValidatorFocus = (event) => {
-    refs.inputCustom.classList.remove("valid", "invalid");
-};
 
-refs.inputCustom.addEventListener('blur', onValidatorBlur); 
-refs.inputCustom.addEventListener('focus', onValidatorFocus); 

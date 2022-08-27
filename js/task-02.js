@@ -32,18 +32,13 @@ const ingredients = [
 
 const ingredientEl = document.querySelector('#ingredients');
 
-const el = [];
-
-for (let i=0; i<ingredients.length; i += 1){
-  const ingredint = ingredients[i];
-
+const el = ingredients.map(option => {
   const liEl = document.createElement('li');
-
-  liEl.textContent = ingredint;
   liEl.classList.add('item');
-
-  el.push(liEl);
-}
+  liEl.textContent = option;
+  console.log(liEl);
+  return liEl;
+});
 
 ingredientEl.append(...el);
 

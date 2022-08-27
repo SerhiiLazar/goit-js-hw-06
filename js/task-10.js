@@ -20,37 +20,43 @@
 //     .padStart(6, 0)}`;
 // }
 
-const inputEl = document.querySelector('#controls > input');
+const inputEl = document.querySelector('input');
 const btnCreat = document.querySelector('[data-create]');
 const btnDestroy = document.querySelector('[data-destroy]');
 const boxesElem = document.querySelector('#boxes');
 
+
 btnCreat.addEventListener('click', createBoxes);
+
 btnDestroy.addEventListener('click', () => { 
-  location.reload();
+    boxesElem.innerHTML = "";
+    inputEl.value = "";
+    
 });
 
+let size = 30;
+
+
 function createBoxes(amount) {
-  amount = inputEl.value;
   const boxes = [];
-  let size = 30;
-  let count = +amount;
-  for (let i = 0; i< count; i+=1) {
+  amount = inputEl.value;
+  size += 10;
+  for (let i = 0; i < amount; i += 1) {
     const div = document.createElement('div');
-    size +=10;
-    div.style.width = `${size + i * 10}px`;
-    div.style.height = `${size + i * 10}px`;
+   
+    
+    div.style.width = `${size}px`;
+    div.style.height = `${size}px`;
     div.style.backgroundColor = getRandomHexColor();
     
+
     boxes.push(div);
     
   }
   boxesElem.append(...boxes);
+  
 };
-
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
-}
-
-
+};

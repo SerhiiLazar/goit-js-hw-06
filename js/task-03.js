@@ -41,7 +41,7 @@ const images = [
 const galleryEl = document.querySelector('.gallery');
 const imagesGall = document.querySelector('li');
 const imageEl = imgEl => {
-  return`\n<li><img src="${imgEl.url}" alt=${imgEl.alt} width="350" height="200"></li>`;
+  return`\n<li><img src="${imgEl.url}" alt="${imgEl.alt}" width="350", height="200"></li>`;
 };
 const markup = images.map(imageEl).join('');
 console.log(markup);
